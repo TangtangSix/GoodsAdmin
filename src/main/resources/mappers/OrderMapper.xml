@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tang.goods.mapper.OrderMapper">
+    <select id="searchOrder" parameterType="String" resultType="com.tang.goods.entity.Order">
+        select * from orders where no like "%"#{key}"%"
+    </select>
+
+    <insert id="insertOrder" parameterType="com.tang.goods.entity.Order">
+        insert into
+        order(no,clientNo,date,amount)
+        values (#{no},#{clientNo},#{date},#{amount})
+    </insert>
+
+    <delete id="deleteOrder" parameterType="String">
+        delete from
+        order
+        where no=#{no}
+    </delete>
+
+    <update id="updateOrder" parameterType="com.tang.goods.entity.Order">
+        update
+        order
+        set date=#{date},amount=#{amount}
+    </update>
+
+</mapper>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tang.goods.mapper.GoodsMapper">
+    <select id="searchGoods" parameterType="String" resultType="com.tang.goods.entity.Goods" >
+        select *from goods where name like "%"#{key}"%" or introduction like  "%"#{key}"%"
+    </select>
+
+    <insert id="insertGoods" parameterType="com.tang.goods.entity.Goods">
+        insert into
+        goods(no,brandName,name,unit,sellingPrice,costPrice,introduction,category,stock)
+        values (#{no},#{brandName},#{name},#{unit},#{sellingPrice},#{costPrice},#{introduction},#{category},#{stock})
+    </insert>
+
+    <delete id="deleteGoods" parameterType="String">
+        SET FOREIGN_KEY_CHECKS = 0;
+        delete from goods where no=#{no};
+        SET FOREIGN_KEY_CHECKS = 1;
+    </delete>
+
+    <update id="updateGoods"  parameterType="com.tang.goods.entity.Goods">
+        update goods set name=#{name},brandName=#{brandName},unit=#{unit},sellingPrice=#{sellingPrice}
+        ,costPrice=#{costPrice},introduction=#{introduction},category=#{category},stock=#{stock}
+        where no=#{no}
+    </update>
+</mapper>
+

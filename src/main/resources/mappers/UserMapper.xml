@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tang.goods.mapper.UserMapper">
+    <select id="findUser" parameterType="com.tang.goods.entity.User" resultType="com.tang.goods.entity.User">
+        select * from user where userName=#{userName} and password=#{password}
+    </select>
+
+    <select id="getAllUsers" resultType="com.tang.goods.entity.User">
+        select * from user
+    </select>
+</mapper>
+
